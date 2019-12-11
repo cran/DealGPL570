@@ -21,9 +21,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(DealGPL570)
-options('download.file.method.GEOquery'='libcurl')
-GEOquery::getGEOSuppFiles("GSE104683", makeDirectory = FALSE)
-file <- list.files(pattern = "GSE104683_RAW.tar", full.names = T)
+GEOquery::getGEOSuppFiles("GSE104683", makeDirectory = FALSE, baseDir = tempdir())
+file <- list.files(path = tempdir(), pattern = "GSE104683_RAW.tar", full.names = TRUE)
 file
 result <- DealGPL570(file = file)
 ```
